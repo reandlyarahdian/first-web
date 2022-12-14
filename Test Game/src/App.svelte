@@ -42,25 +42,25 @@ const aPlus = () => {
           id: 0, 
           name: "1-5",
           desc : "Wah, kamu banyak temennya nih. Setengah dari responden kami juga punya jumlah lipstik yang sama kaya kamu",
-          clr : "red" 
+          clr : "#e6b8afff" 
       },
   { 
           id: 1, 
           name : "6-10",
           desc : "Lumayan banyak yang sama kayak kamu, setidaknya 1/3 dari jumlah responden kami",
-          clr : "red"
+          clr : "#f4ccccff"
   },
   { 
           id: 2, 
           name : "11-20" ,
           desc : "wah, kamu pasti punya banyak koleksi lipstik yang menarik! sama kayak 12,8% responden kami",
-          clr : "red"
+          clr : "#dd7e6bff"
   },
       { 
           id: 3, 
           name : ">20" ,
           desc : "tenang aja, kamu gak sendiri kok. setidaknya 5 dari 100 orang di luar sana juga sama kayak kamu",
-          clr : "red"
+          clr : "#e06666ff"
   }
 ];
 let selected = 0;
@@ -72,7 +72,7 @@ let selected = 0;
       a: "Lebih dari setengah responden kami juga melakukan ini. Memang, saat ini hanya ada sedikit opsi untuk mengelola sampah plastik yang kita hasilkan.",
       b: "Hanya saja, menurut Kementerian PUPR, timbunan sampah secara nasional yaitu 175.000 ton per hari dan 15 persen diantaranya berasal dari plastik sekali pakai, seperti kemasan kosmetik kita",
       c: "Sampah plastik yang terkumpul di TPA baru akan terurai setelah puluhan tahun. Padahal, masa pakai kosmetiknya saja tidak sampai 5 tahun.",
-      clr : "red" 
+      clr : "#e6b8afff"  
   },
   { 
       id: 1, 
@@ -80,7 +80,7 @@ let selected = 0;
       a: "Kamu dan setidaknya 3,2% warga DKI Jakarta melakukan hal ini.",
       b: "Kami paham, timbunan sampah rumah tangga pasti mengganggu pemandangan di rumah.",
       c: "Sayangnya, kemasan plastik yang dibakar akan mengeluarkan zat beracun yang dapat mengganggu pernapasan kamu dan keluarga serta Gas Rumah Kaca yang akan merusak lapisan ozon dan memperparah perubahan iklim.",
-      clr : "red"
+      clr : "#f4ccccff"
 },
   { 
       id: 2, 
@@ -88,7 +88,7 @@ let selected = 0;
       a: "Pilihan yang tidak umum, tapi setidaknya 1,14% warga Jakarta masih melakukan ini.",
       b: "Penelitian dari Universitas Diponegoro menemukan adanya sejumlah mikroplastik di perairan Karimun Jawa yang berasal dari golongan HDPE, PVC, Polypropylene (PP), Polystrene (PS), ABS, Latex, LDPE, Nitrile, dan Nylon. HDPE, PP, PS, dan ABS adalah bahan plastik yang sering digunakan di kemasan kosmetik",
       c: "Efek buruknya, ya, mikroplastik itu kemungkinan saat ini sudah masuk ke piring makan kamu melalui ikan dan garam laut.",
-      clr : "red"
+      clr : "#dd7e6bff"
 },
   { 
       id: 3, 
@@ -96,14 +96,20 @@ let selected = 0;
       a: "Terima kasih! Kamu telah membantu mengurangi timbulan sampah agar tidak berakhir di landfill.",
       b: "Apakah kamu tahu, kemana sampah-sampah plastik yang telah kamu kumpulkan tersebut pergi?",
       c: "Ikuti liputan kami selengkapnya",
-      clr : "red"
+      clr : "#e06666ff"
 }
 ];
+
+let pilih = "";
+
+const changePilih = (color) => {
+  pilih = color
+}
 </script>
 
 
 <div class="demo">
-  <Scroller	
+  <Scroller
   bind:count
   bind:index
   bind:offset
@@ -148,19 +154,18 @@ let selected = 0;
 <div slot="foreground">
   <div>
     <section>
-      <div>
-    <h1>Yang Tersisa dari Bibir Merona</h1>
+      <div class="center-div"><h1 style="font-size: 52px;text-align: center;">Yang Tersisa dari Bibir Merona</h1>
   </div>
     </section>
 </div>
 
   <div>
-      <section>
-        <div><label>Halo Namaku <input type="text" bind:value={$user.name}/></label></div>
+      <section style="display: flex;">
+        <div class="center-div"><label class="prompt">Halo Namaku <input type="text" bind:value={$user.name}/></label></div>
       </section>
   </div>
 <div>
-<section><div> Hingga saat ini, aku memiliki 
+<section><div class="center-div"><div class="prompt" style="background-color: {data[selected].clr};"> Hingga saat ini, aku memiliki  
 <select bind:value={selected}>
   {#each data as d}
     <option value={d.id}>
@@ -169,19 +174,19 @@ let selected = 0;
   {/each}
 </select> buah produk kosmetik bibir
 </div>
+</div>
 </section>
 </div>
 <div>
   <section>
-    <div>
-      <div>{data[selected].desc}</div>
+    <div class="center-div"><div class="prompt" style="background-color: {data[selected].clr};">{data[selected].desc}</div>
     </div>
   </section>
 </div>
 <div>
   <section>
-    <div>
-      <label>Saya dengan sadar menggunakan lipstik sejak usia <input type="text" bind:value={$user.usia}/> tahun</label>
+    <div class="center-div">
+      <label class="prompt">Saya dengan sadar menggunakan lipstik sejak usia <input type="text" bind:value={$user.usia}/> tahun</label>
     </div>
   </section>
   </div>
@@ -194,42 +199,50 @@ let selected = 0;
   </section>    
   </div>
 <div>
-<section><div> Apakah kamu memperhatikan masa kadaluarsa produk kosmetik bibir yang kamu miliki?</div></section>
-<button>Ya</button>
-<button>Tidak</button>
+<section><div class="center-div"><div class="prompt" style="background-color: #ffe2e2ff;">Apakah kamu memperhatikan masa kadaluarsa produk kosmetik bibir yang kamu miliki?</div>
+  <div style="    display: flex;
+  width: 80%;
+  justify-content: space-between;"><button style="background-color: #e6b8afff; width: 100px" on:click={() => changePilih("#e6b8afff")}>Ya</button>
+    <button style="background-color: #e06666ff; width: 100px" on:click={() => changePilih("#e06666ff")}>Tidak</button></div>
+</div>
+</section>
 </div>
 <div>
-<section><div> 67,5% responden kami mengaku mengetahui dan/atau memperhatikan Period After Opening (PAO) 
+<section><div class="center-div"> <div class="prompt" style="background-color: {pilih}"> 67,5% responden kami mengaku mengetahui dan/atau memperhatikan Period After Opening (PAO) 
   atau masa simpan produk kosmetik yang mereka miliki. Sementara 32,5% sisanya tidak mengetahui 
-  ataupun memperhatikan masa pakai setelah membuka produk kosmetik mereka.</div> </section>
+  ataupun memperhatikan masa pakai setelah membuka produk kosmetik mereka.</div> </div></section>
 </div>
 <div>
-  <section>
-  <div> 
+  <section class="center-div">
+  <div class="prompt"> 
       Produk lipstik rata-rata memiliki PAO 12-24 bulan. Lalu apa yang kamu lakukan jika produk kosmetik yang kamu miliki telah melewati masa pakai atau tanggal kadaluarsanya?
-    </div> 
-      <button on:click={() => {num = 0}}>Dibuang ke tong sampah</button>
-  <button on:click={() => {num = 1}}>Dibakar di depan rumah</button>
-  <button on:click={() => {num = 2}}>Dibuang ke badan air (sungai, kali, atau got)</button>
-  <button on:click={() => {num = 3}}>Dikumpulkan untuk didaur ulang</button>  
-    </section>
+    </div>
+    <div style="display: flex;
+    width: 80%;
+    justify-content: space-between;"> 
+      <button style="background-color: {data1[0].clr}" on:click={() => {num = 0}}>Dibuang ke tong sampah</button>
+  <button style="background-color: {data1[1].clr}" on:click={() => {num = 1}}>Dibakar di depan rumah</button>
+  <button style="background-color: {data1[2].clr}" on:click={() => {num = 2}}>Dibuang ke badan air (sungai, kali, atau got)</button>
+  <button style="background-color: {data1[3].clr}" on:click={() => {num = 3}}>Dikumpulkan untuk didaur ulang</button>  
+    </div>    
+</section>
   </div>
 <div>
-<section><div> {data1[num].a}</div> </section>
+<section><div class="center-div"> <div class="prompt" style="background-color: {data1[num].clr}">{data1[num].a}</div></div> </section>
 </div>
 <div>
-<section><div> {data1[num].b}</div> </section>
+<section><div class="center-div"> <div class="prompt" style="background-color: {data1[num].clr}">{data1[num].b}</div></div> </section>
 </div>
 <div>
-<section><div> {data1[num].c}</div> </section>
+<section><div class="center-div"> <div class="prompt" style="background-color: {data1[num].clr}">{data1[num].c}</div></div> </section>
 </div>
 <div>
-<section><div> <p>Saat ini sebenarnya Kementerian Lingkungan Hidup dan Kehutanan (KLHK) 
+<section><div class="center-div"> <p>Saat ini sebenarnya Kementerian Lingkungan Hidup dan Kehutanan (KLHK) 
   melalui Permen LHK Nomor 75 Tahun 2019 sudah menargetkan pengurangan timbulan 
   sampah hingga sebesar 30 persen pada tahun 2030.</p></div> </section>
 </div>
 <div>
-<section><div> <p>Kementerian LHK mewajibkan produsen untuk mengurangi sampah dengan 
+<section><div class="center-div"> <p>Kementerian LHK mewajibkan produsen untuk mengurangi sampah dengan 
   cara menggunakan produk kemasan atau wadah yang mudah diurai oleh alam, mendaur 
   ulang sampah mereka, menggunakan bahan baku produksi hasil daur ulang, serta 
   menarik kembali sampah dan produk kemasan atau wadah dari konsumen untuk didaur ulang.  
@@ -237,7 +250,7 @@ let selected = 0;
   kecantikan dan perawatan tubuh atau personal care.</p></div> </section>
 </div>
 <div>
-<section><div> <p>Memang beberapa tahun belakangan ini industri kecantikan di Indonesia 
+<section><div class="center-div"> <p>Memang beberapa tahun belakangan ini industri kecantikan di Indonesia 
   sedang mengalami kenaikan yang sangat pesat. Data yang dirilis oleh Nielsen 
   and Euromonitor menunjukkan adanya pertumbuhan penjualan sebesar 11,99% pada 
   tahun 2017 di Indonesia, yang memberikan kontribusi sebesar Rp19 triliun atau 
@@ -245,57 +258,57 @@ let selected = 0;
   enam tahun sebelumnya, yaitu hanya 10%. </p></div> </section>
 </div>
 <div>
-<section><div> <p>Kenaikan tersebut juga tergambar dari data produk kosmetik yang terdaftar 
+<section><div class="center-div"> <p>Kenaikan tersebut juga tergambar dari data produk kosmetik yang terdaftar 
   di BPOM sejak tahun 2017-2021. Dari hasil analisis, kami menemukan…</p></div> </section>
 </div>
 <div>
-<section><div><p>Jumlah produk kosmetik yang terdaftar di BPOM melonjak lima kali lipat dari 2017 ke 2021. </p></div></section>
+<section><div class="center-div"><p>Jumlah produk kosmetik yang terdaftar di BPOM melonjak lima kali lipat dari 2017 ke 2021. </p></div></section>
 </div>
 <div>
-<section><div><p>Informasi Data Kosmetika Terdaftar di cekbpom.pom.go.id</p></div></section>
+<section><div class="center-div"><p>Informasi Data Kosmetika Terdaftar di cekbpom.pom.go.id</p></div></section>
 </div>
 <div>
-<section><div><p>Salah satu faktor penting yang mengubah pola konsumsi kosmetik di Indonesia, 
+<section><div class="center-div"><p>Salah satu faktor penting yang mengubah pola konsumsi kosmetik di Indonesia, 
   menurut narasumber kami Margaretha Untoro, yaitu semakin banyaknya influencer kecantikan 
   khususnya di Youtube. Sehingga membuat orang-orang memiliki ketertarikan lebih kepada 
   tren kecantikan dan akhirnya menciptakan peluang pasar baru.</p></div></section>
 </div>
 <div>
-<section><div><p>Pangsa pasar Indonesia untuk industri kosmetik meningkat dari Rp36 triliun pada 
+<section><div class="center-div"><p>Pangsa pasar Indonesia untuk industri kosmetik meningkat dari Rp36 triliun pada 
   2016 menjadi Rp46,4 triliun pada 2017. Kemenperin mencatat adanya pertumbuhan sebesar 7,36% 
   pada kuartal I 2018 dan diperkirakan pasar kosmetik lokal ini akan mencapai Rp77,3 triliun pada 2022.</p></div></section>
 </div>
 <div>
-<section><div><p>Total jumlah produk kosmetik yang terdaftar di BPOM hingga saat ini mencapai 
+<section><div class="center-div"><p>Total jumlah produk kosmetik yang terdaftar di BPOM hingga saat ini mencapai 
   lebih dari 330ribu jenis, baik dari produsen lokal maupun impor. </p></div></section>
 </div>
 <div>
-<section><div><p>Sepanjang 2021 hingga Juli 2022, perusahaan kosmetik yang terdaftar di BPOM 
+<section><div class="center-div"><p>Sepanjang 2021 hingga Juli 2022, perusahaan kosmetik yang terdaftar di BPOM 
   juga mengalami pertambahan dari 819 menjadi 913. Peningkatan industri kosmetik tersebut 
   didominasi oleh UKM, yakni sebesar 83%.</p></div></section>
 </div>
 <div>
-<section><div><p>Jumlah produk dengan kata kunci ‘lip’ untuk produk dekoratif bibir yang 
+<section><div class="center-div"><p>Jumlah produk dengan kata kunci ‘lip’ untuk produk dekoratif bibir yang 
   terdaftar di cekbpom.pom.go.id</p></div></section>
 </div>
 <div>
-<section><div><p>Perbandingan rata-rata produk kosmetik dan lipstik yang terdaftar per hari 
+<section><div class="center-div"><p>Perbandingan rata-rata produk kosmetik dan lipstik yang terdaftar per hari 
   di cekbpom.pom.go.id</p></div></section>
 </div>
 <div>
-<section><div><p>Industri lipstik lokal mulai berjaya di tahun 2019. Dari 155 jenis kosmetik 
+<section><div class="center-div"><p>Industri lipstik lokal mulai berjaya di tahun 2019. Dari 155 jenis kosmetik 
   yang terdaftar, 21 di antaranya adalah produk kosmetik bibir. </p></div></section>
 </div>
 <div>
-<section><div><p>Terdapat peningkatan yang berbanding lurus antara jumlah kosmetik yang 
+<section><div class="center-div"><p>Terdapat peningkatan yang berbanding lurus antara jumlah kosmetik yang 
   terdaftar dengan jumlah produk lipstik di BPOM selama tahun 2017-2021.</p></div></section>
 </div>
 <div>
-<section><div><p>Di balik besarnya potensi cuan industri kosmetik, ada potensi timbulan 
+<section><div class="center-div"><p>Di balik besarnya potensi cuan industri kosmetik, ada potensi timbulan 
   sampah yang menghantuinya. </p></div></section>
 </div>
 <div>
-<section><div><p>Tapi angka tersebut hanyalah sekitar 15% dari seluruh produk kosmetik 
+<section><div class="center-div"><p>Tapi angka tersebut hanyalah sekitar 15% dari seluruh produk kosmetik 
   yang beredar di Indonesia. Mengutip dari Katadata, Perhimpunan Perusahaan dan 
   Asosiasi Kosmetika Indonesia (PPAK) menduga terdapat 85% lainnya yang merupakan 
   produk kosmetik ilegal yang tidak memiliki izin edar ataupun yang merupakan tiruan 
@@ -303,7 +316,7 @@ let selected = 0;
   lebih besar dari yang tercatat di BPOM.</p></div></section>
 </div>
 <div>
-<section><div><p>Kami juga merangkum 10 merek kosmetik lokal favorit berdasarkan survei 
+<section><div class="center-div"><p>Kami juga merangkum 10 merek kosmetik lokal favorit berdasarkan survei 
   Populix, yaitu Wardah, Emina, Make Over, Somethinc, Purbasari, Y.O.U, 
   Dear Me Beauty, Sariayu, Luxcrime, dan Mustika Ratu. Dari ke-10 merek tersebut, 
   baru Wardah, Emina, Somethinc yang memiliki program daur ulang melalui kerja sama 
@@ -313,26 +326,26 @@ let selected = 0;
   mendaur ulang produk mereka.</p></div></section>
 </div>
 <div>
-<section><div><p>Dari hasil wawancara kami dengan Waste4Change, salah satu kriteria produk 
+<section><div class="center-div"><p>Dari hasil wawancara kami dengan Waste4Change, salah satu kriteria produk 
   kemasan lipstik yang mudah didaur ulang yaitu menggunakan warna transparan atau putih, 
   agar tidak menghasilkan bijih plastik hasil daur ulang yang downgrade terlalu jauh dari 
   kualitas plastik baru. </p></div></section>
 </div>
 <div>
-<section><div> <p>Dari ke-10 produk lokal favorit ada sekitar 94 jenis produk kosmetik dekoratif bibir. 
+<section><div class="center-div"> <p>Dari ke-10 produk lokal favorit ada sekitar 94 jenis produk kosmetik dekoratif bibir. 
   Namun hanya kurang lebih 38 produk yang menggunakan plastik transparan untuk kemasannya. 
   Sisanya memakai kemasan berwarna hitam, atau warna-warna terang sesuai dengan warna produk 
   lipstik di dalamnya. </p></div> </section>
 </div>
 <div>
-<section><div> <p>Perbandingan jumlah produk kosmetik bibir dengan kemasan transparan dari merek lokal favorit</p></div> </section>
+<section><div class="center-div"> <p>Perbandingan jumlah produk kosmetik bibir dengan kemasan transparan dari merek lokal favorit</p></div> </section>
 </div>
 <div>
-<section><div> <p>Kemasan kosmetik yang berwarna tetap bisa didaur ulang. Hanya saja, dibutuhkan 
+<section><div class="center-div"> <p>Kemasan kosmetik yang berwarna tetap bisa didaur ulang. Hanya saja, dibutuhkan 
   usaha ekstra untuk memisahkan sampah plastik tersebut sesuai warna dan jenis bahannya. </p></div> </section>
 </div>
 <div>
-<section><div> <p>Jadi, sampah kosmetik harusnya dikemanain?</p></div> 
+<section><div class="center-div"> <p>Jadi, sampah kosmetik harusnya dikemanain?</p></div> 
   <button >Pilih lagi cara membuang sampah kosmetikmu</button>
   <div>atau</div>
   <button >Klik di sini untuk menonton dokumenter kami</button></section>
@@ -358,6 +371,7 @@ let selected = 0;
 }
 
 [slot="foreground"] {
+  scroll-snap-type: y mandatory;
   pointer-events: none;
 }
 
@@ -365,11 +379,27 @@ let selected = 0;
   pointer-events: all;
 }
 
+.center-div{
+  width: 100%;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.prompt {
+  border-radius: 5px;
+    background-color: #eeeeee;
+    color: black;
+    padding: 10px 30px;
+    border: 2px solid;
+}
+
 section {
-  height: 80vh;
-  background-color: rgba(0,0,0,0.5);
+  height: 100vh;
+  scroll-snap-align: start;
+  background-color: rgba(0,0,0,0.25);
   color: white;
-  padding: 2em;
-  margin: 0 0 2em 0;
 }
 </style>
