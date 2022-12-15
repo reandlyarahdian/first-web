@@ -1,6 +1,6 @@
 <script>
   import { user } from './store.js';
-  import Scroller from '@sveltejs/svelte-scroller';
+  import Scroller from './ScrollerCustom.svelte';
   import Chartjs from 'chart.js/auto';
   import { onMount } from 'svelte';
 
@@ -24,14 +24,41 @@ onMount(async (promise) => {
           labels: chartLabels,
           datasets: [{
               label:"usia rata-rata memakai lipstik karena keinginan sendiri",
-              backgroundColor: 'rgb(255, 99, 132)',
-              borderColor: 'rgb(255, 99, 132)',
+              backgroundColor: "#e74554",
+              borderColor: "#e74554",
+              color: "#000000",
               data: chartValues
           }]
-      }
+      },
+      options: {
+        plugins: {
+          customCanvasBackgroundColor: {
+            color: 'white',
+          }
+        }
+      },
+      plugins: [plugin],
   });
 
 });
+
+const plugin = {
+  id: 'customCanvasBackgroundColor',
+  beforeDraw: (chart, args, options) => {
+    const {ctx} = chart;
+    ctx.save();
+    ctx.globalCompositeOperation = 'destination-over';
+    ctx.fillStyle = options.color || '#99ffff';
+    ctx.fillRect(0, 0, chart.width, chart.height);
+    ctx.restore();
+  }
+};
+
+let box;
+	
+	function scrollToTop() {
+		box.scrollIntoView();
+	}
 
   let a = 0
 const aPlus = () => {
@@ -113,49 +140,84 @@ const changePilih = (color) => {
   bind:count
   bind:index
   bind:offset
-  bind:progress>
+  bind:progress
+  >
   <div slot="background">
     {#if index <=4 || index >= 6 && index <= 11}
-    <img style="width: 100vw;" src='https://i.postimg.cc/qqRXHhmj/cover-medium.png' alt="cover">
+    <div class="center-image"><img style="height: 100vh;" src='https://i.postimg.cc/qqRXHhmj/cover-medium.png' alt="cover"></div>
     {/if}
     {#if index >= 12 && index <= 14}
-    <div class="center-div"><img class="image" src='https://i.postimg.cc/DwZSBgXW/sampah.png' alt="sampah"></div>
+    <div class="center-image"><img class="image" src='https://i.postimg.cc/DwZSBgXW/sampah.png' alt="sampah"></div>
     
     {/if}
     {#if index == 15}
-    <div class="center-div"><img class="image"  src='https://i.postimg.cc/k5gvNKnw/lipstick.png' alt="lipstick"></div>
+    <div class="center-image"><img class="image"  src='https://i.postimg.cc/k5gvNKnw/lipstick.png' alt="lipstick"></div>
     {/if}
     {#if index == 16}
-    <div class="center-div"><img class="image"  src='https://i.postimg.cc/hGX7Pr4F/merge-2.png' alt="lipsticks"></div>
+    <div class="center-image"><img class="image"  src='https://i.postimg.cc/hGX7Pr4F/merge-2.png' alt="lipsticks"></div>
     
     {/if}
     {#if index == 17}
-    <div class="center-div"><img class="image"  src='https://i.postimg.cc/wjcs1ZHm/chart1.png' alt="chart1"></div>
+    <div class="center-image"><img class="image"  src='https://i.postimg.cc/wjcs1ZHm/chart1.png' alt="chart1"></div>
     {/if}
     {#if index == 22}
-    <div class="center-div"><img class="image"  src='https://i.postimg.cc/kDPB4Fps/chart2.png' alt="chart2"></div>
+    <div class="center-image"><img class="image"  src='https://i.postimg.cc/kDPB4Fps/chart2.png' alt="chart2"></div>
     {/if}
     {#if index == 23 || index == 24}
-    <div class="center-div"><img class="image"  src='https://i.postimg.cc/qJmZFBSz/chart3.png' alt="chart3"></div>
+    <div class="center-image"><img class="image"  src='https://i.postimg.cc/qJmZFBSz/chart3.png' alt="chart3"></div>
     {/if}
-    {#if index >= 18 && index <= 21 || index >= 25 && index <= 27}
-    <div class="center-div"><img class="image"  src='https://i.postimg.cc/BQJL1sZB/phone.png' alt="phone"></div>
+    {#if index === 18}
+    <div class="center-image"><div style="position:relative;"><img class="image"  src='https://i.postimg.cc/BQJL1sZB/phone.png' alt="phone"><span class="phone-text">
+    Salah satu faktor penting yang mengubah pola konsumsi kosmetik di Indonesia, menurut narasumber kami Margaretha Untoro, yaitu semakin banyaknya influencer kecantikan khususnya di Youtube. Sehingga membuat orang-orang memiliki ketertarikan lebih kepada tren kecantikan dan akhirnya menciptakan peluang pasar baru.</span></div></div>
+    {/if}
+    {#if index === 19}
+    <div class="center-image"><div style="position:relative;"><img class="image"  src='https://i.postimg.cc/BQJL1sZB/phone.png' alt="phone"><span class="phone-text">
+      Pangsa pasar Indonesia untuk industri kosmetik meningkat dari Rp36 triliun pada 
+      2016 menjadi Rp46,4 triliun pada 2017. Kemenperin mencatat adanya pertumbuhan sebesar 7,36% 
+      pada kuartal I 2018 dan diperkirakan pasar kosmetik lokal ini akan mencapai Rp77,3 triliun pada 2022.</span></div></div>
+    {/if}
+    {#if index === 20}
+    <div class="center-image"><div style="position:relative;"><img class="image"  src='https://i.postimg.cc/BQJL1sZB/phone.png' alt="phone"><span class="phone-text">
+      Total jumlah produk kosmetik yang terdaftar di BPOM hingga saat ini mencapai 
+      lebih dari 330ribu jenis, baik dari produsen lokal maupun impor.</span></div></div>
+    {/if}
+    {#if index === 21}
+    <div class="center-image"><div style="position:relative;"><img class="image"  src='https://i.postimg.cc/BQJL1sZB/phone.png' alt="phone"><span class="phone-text">
+      Sepanjang 2021 hingga Juli 2022, perusahaan kosmetik yang terdaftar di BPOM 
+      juga mengalami pertambahan dari 819 menjadi 913. Peningkatan industri kosmetik tersebut 
+      didominasi oleh UKM, yakni sebesar 83%.</span></div></div>
+    {/if}
+    {#if index === 25}
+    <div class="center-image"><div style="position:relative;"><img class="image"  src='https://i.postimg.cc/BQJL1sZB/phone.png' alt="phone"><span class="phone-text">
+      Terdapat peningkatan yang berbanding lurus antara jumlah kosmetik yang 
+      terdaftar dengan jumlah produk lipstik di BPOM selama tahun 2017-2021.</span></div></div>
+    {/if}
+    {#if index === 26}
+    <div class="center-image"><div style="position:relative;"><img class="image"  src='https://i.postimg.cc/BQJL1sZB/phone.png' alt="phone"><span class="phone-text">
+      Di balik besarnya potensi cuan industri kosmetik, ada potensi timbulan 
+      sampah yang menghantuinya.</span></div></div>
+    {/if}
+    {#if index === 27}
+    <div class="center-image"><div style="position:relative;"><img class="image"  src='https://i.postimg.cc/BQJL1sZB/phone.png' alt="phone"><span class="phone-text" style="font-size: : 8px;">
+      Tapi angka tersebut hanyalah sekitar 15% dari seluruh produk kosmetik 
+      yang beredar di Indonesia. Mengutip dari Katadata, Perhimpunan Perusahaan dan 
+      Asosiasi Kosmetika Indonesia (PPAK) menduga terdapat 85% lainnya yang merupakan 
+      produk kosmetik ilegal yang tidak memiliki izin edar ataupun yang merupakan tiruan 
+      dari merek lain. Artinya, potensi timbulan sampah kosmetik yang sebenarnya, 
+      lebih besar dari yang tercatat di BPOM.</span></div></div>
     {/if}
     {#if index == 31}
-    <div class="center-div"><img class="image"  src='https://i.postimg.cc/Y9cj2Byg/table1.png' alt="table1"></div>
+    <div class="center-image"><img class="image"  src='https://i.postimg.cc/Y9cj2Byg/table1.png' alt="table1"></div>
     {/if}
     {#if index >= 28 && index <= 30 || index == 32}
-    <div class="center-div"><img class="image" src='https://i.postimg.cc/YCb1S01F/merge-1.png' alt="lipsticks2"></div>
+    <div class="center-image"><img class="image" src='https://i.postimg.cc/YCb1S01F/merge-1.png' alt="lipsticks2"></div>
     {/if}
-    {#if index == 33}
-    <div class="center-div"><img class="image"  src='https://i.postimg.cc/zDbpPCTc/lipbam.png' alt="lipbam"></div>
-    {/if}  
   </div>
 
-<div slot="foreground">
+<div id="foreground" slot="foreground">
   <div>
     <section>
-      <div class="center-div"><h1 style="font-size: 52px;text-align: center;">Yang Tersisa dari Bibir Merona</h1>
+      <div class="center-div" bind:this={box}><h1 style="font-size: 52px;text-align: center; color:aliceblue;">Yang Tersisa dari Bibir Merona</h1>
   </div>
     </section>
 </div>
@@ -193,9 +255,13 @@ const changePilih = (color) => {
   </div>
 
   <div><section>
-    <div>
+    <div class="center-div">
+    <div style="width: 90vw; height: 70vh;display: flex;
+    flex-direction: column;
+    align-items: center;"><p>
       Berdasarkan hasil survei daring kami kepada 117 orang, rata-rata memakai lipstik 
-    karena keinginan sendiri ketika menginjak bangku SMA atau usia 15-19 tahun<canvas bind:this={chartCanvas} id="myChart"></canvas>
+    karena keinginan sendiri ketika menginjak bangku SMA atau usia 15-19 tahun</p><canvas bind:this={chartCanvas} id="myChart"></canvas>
+  </div>
   </div> 
   </section>    
   </div>
@@ -214,7 +280,9 @@ const changePilih = (color) => {
   ataupun memperhatikan masa pakai setelah membuka produk kosmetik mereka.</div> </div></section>
 </div>
 <div>
-  <section class="center-div">
+  <section>
+  
+  <div class="center-div">
   <div class="prompt"> 
       Produk lipstik rata-rata memiliki PAO 12-24 bulan. Lalu apa yang kamu lakukan jika produk kosmetik yang kamu miliki telah melewati masa pakai atau tanggal kadaluarsanya?
     </div>
@@ -225,7 +293,7 @@ const changePilih = (color) => {
   <button style="background-color: {data1[1].clr}" on:click={() => {num = 1}}>Dibakar di depan rumah</button>
   <button style="background-color: {data1[2].clr}" on:click={() => {num = 2}}>Dibuang ke badan air (sungai, kali, atau got)</button>
   <button style="background-color: {data1[3].clr}" on:click={() => {num = 3}}>Dikumpulkan untuk didaur ulang</button>  
-    </div>    
+    </div></div>    
 </section>
   </div>
 <div>
@@ -266,55 +334,40 @@ const changePilih = (color) => {
 <section><div class="center-div"><div class="prompt"><p>Jumlah produk kosmetik yang terdaftar di BPOM melonjak lima kali lipat dari 2017 ke 2021. </p></div></div></section>
 </div>
 <div>
-<section><div class="center-div"><div class="prompt"><p>Informasi Data Kosmetika Terdaftar di cekbpom.pom.go.id</p></div></div></section>
+<section><div class="center-div" style="justify-content: flex-start;"><div class="prompt"><p>Informasi Data Kosmetika Terdaftar di cekbpom.pom.go.id</p></div></div></section>
 </div>
 <div>
-<section><div class="center-div"><div class="prompt"><p>Salah satu faktor penting yang mengubah pola konsumsi kosmetik di Indonesia, 
-  menurut narasumber kami Margaretha Untoro, yaitu semakin banyaknya influencer kecantikan 
-  khususnya di Youtube. Sehingga membuat orang-orang memiliki ketertarikan lebih kepada 
-  tren kecantikan dan akhirnya menciptakan peluang pasar baru.</p></div></div></section>
+<section><div class="center-div"></div></section>
 </div>
 <div>
-<section><div class="center-div"><div class="prompt"><p>Pangsa pasar Indonesia untuk industri kosmetik meningkat dari Rp36 triliun pada 
-  2016 menjadi Rp46,4 triliun pada 2017. Kemenperin mencatat adanya pertumbuhan sebesar 7,36% 
-  pada kuartal I 2018 dan diperkirakan pasar kosmetik lokal ini akan mencapai Rp77,3 triliun pada 2022.</p></div></div></section>
+<section><div class="center-div"></div></section>
 </div>
 <div>
-<section><div class="center-div"><div class="prompt"><p>Total jumlah produk kosmetik yang terdaftar di BPOM hingga saat ini mencapai 
-  lebih dari 330ribu jenis, baik dari produsen lokal maupun impor. </p></div></div></section>
+<section><div class="center-div"></div></section>
 </div>
 <div>
-<section><div class="center-div"><div class="prompt"><p>Sepanjang 2021 hingga Juli 2022, perusahaan kosmetik yang terdaftar di BPOM 
-  juga mengalami pertambahan dari 819 menjadi 913. Peningkatan industri kosmetik tersebut 
-  didominasi oleh UKM, yakni sebesar 83%.</p></div></div></section>
+<section><div class="center-div"></div></section>
 </div>
 <div>
-<section><div class="center-div"><div class="prompt"><p>Jumlah produk dengan kata kunci ‘lip’ untuk produk dekoratif bibir yang 
+<section><div class="center-div" style="justify-content: flex-start;"><div class="prompt"><p>Jumlah produk dengan kata kunci ‘lip’ untuk produk dekoratif bibir yang 
   terdaftar di cekbpom.pom.go.id</p></div></div></section>
 </div>
 <div>
-<section><div class="center-div"><div class="prompt"><p>Perbandingan rata-rata produk kosmetik dan lipstik yang terdaftar per hari 
+<section><div class="center-div" style="justify-content: flex-start;"><div class="prompt"><p>Perbandingan rata-rata produk kosmetik dan lipstik yang terdaftar per hari 
   di cekbpom.pom.go.id</p></div></div></section>
 </div>
 <div>
-<section><div class="center-div"><div class="prompt"><p>Industri lipstik lokal mulai berjaya di tahun 2019. Dari 155 jenis kosmetik 
+<section><div class="center-div" style="justify-content: flex-start;"><div class="prompt"><p>Industri lipstik lokal mulai berjaya di tahun 2019. Dari 155 jenis kosmetik 
   yang terdaftar, 21 di antaranya adalah produk kosmetik bibir. </p></div></div></section>
 </div>
 <div>
-<section><div class="center-div"><div class="prompt"><p>Terdapat peningkatan yang berbanding lurus antara jumlah kosmetik yang 
-  terdaftar dengan jumlah produk lipstik di BPOM selama tahun 2017-2021.</p></div></div></section>
+<section><div class="center-div"></div></section>
 </div>
 <div>
-<section><div class="center-div"><div class="prompt"><p>Di balik besarnya potensi cuan industri kosmetik, ada potensi timbulan 
-  sampah yang menghantuinya. </p></div></div></section>
+<section><div class="center-div"></div></section>
 </div>
 <div>
-<section><div class="center-div"><div class="prompt"><p>Tapi angka tersebut hanyalah sekitar 15% dari seluruh produk kosmetik 
-  yang beredar di Indonesia. Mengutip dari Katadata, Perhimpunan Perusahaan dan 
-  Asosiasi Kosmetika Indonesia (PPAK) menduga terdapat 85% lainnya yang merupakan 
-  produk kosmetik ilegal yang tidak memiliki izin edar ataupun yang merupakan tiruan 
-  dari merek lain. Artinya, potensi timbulan sampah kosmetik yang sebenarnya, 
-  lebih besar dari yang tercatat di BPOM.</p></div></div></section>
+<section><div class="center-div"></div></section>
 </div>
 <div>
 <section><div class="center-div"><div class="prompt"><p>Kami juga merangkum 10 merek kosmetik lokal favorit berdasarkan survei 
@@ -339,7 +392,7 @@ const changePilih = (color) => {
   lipstik di dalamnya. </p></div></div></section>
 </div>
 <div>
-<section><div class="center-div"><div class="prompt"><p>Perbandingan jumlah produk kosmetik bibir dengan kemasan transparan dari merek lokal favorit</p></div></div></section>
+<section><div class="center-div" style="justify-content: flex-start;"><div class="prompt"><p>Perbandingan jumlah produk kosmetik bibir dengan kemasan transparan dari merek lokal favorit</p></div></div></section>
 </div>
 <div>
 <section><div class="center-div"> <div class="prompt"><p>Kemasan kosmetik yang berwarna tetap bisa didaur ulang. Hanya saja, dibutuhkan 
@@ -349,9 +402,15 @@ const changePilih = (color) => {
 <section><div class="center-div"> <div class="prompt"><p>Jadi, sampah kosmetik harusnya dikemanain?</p></div> 
   <div style="display: flex;
   width: 80%;
-  justify-content: space-between;"><button >Pilih lagi cara membuang sampah kosmetikmu</button>
-  <div>atau</div>
-  <button >Klik di sini untuk menonton dokumenter kami</button></div></div></section>
+  justify-content: space-between;"><button on:click={scrollToTop}>Pilih lagi cara membuang sampah kosmetikmu</button>
+  <div class="prompt">atau</div>
+  <div style="position: relative;"><img class="image" style="height: 20vh; width:30vw" src='https://i.postimg.cc/5NXVf60n/unnamed-15.png' alt="lipbam"><div style="position: absolute; top:0; left:0;display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 90px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;">Klik di sini untuk menonton dokumenter kami</div></div></div></div></section>
 </div>
 </Scroller>
 </div>
@@ -376,7 +435,8 @@ const changePilih = (color) => {
 
 [slot="foreground"] {
   scroll-snap-type: y mandatory;
-  pointer-events: none;
+  height: 100vh;
+    overflow-y: auto;
 }
 
 [slot="foreground"] section {
@@ -384,6 +444,18 @@ const changePilih = (color) => {
 }
 
 .center-div{
+  width: 100%;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.center-image{
   width: 100%;
     display: flex;
     align-items: center;
@@ -401,10 +473,18 @@ const changePilih = (color) => {
     max-width: 1000px;
 }
 
+.phone-text {
+  position: absolute;
+  top: 10%;
+  left: 27%;
+  font-size: 0.8rem;
+  width: 20%;
+  color: black;
+}
+
 section {
   height: 100vh;
   scroll-snap-align: start;
-  background-color: rgba(0,0,0,0.25);
-  color: white;
+  position: relative
 }
 </style>
