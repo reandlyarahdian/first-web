@@ -116,38 +116,39 @@ const changePilih = (color) => {
   bind:progress>
   <div slot="background">
     {#if index <=4 || index >= 6 && index <= 11}
-    <img class="image" src='https://i.postimg.cc/qqRXHhmj/cover-medium.png' alt="img1">
+    <img style="width: 100vw;" src='https://i.postimg.cc/qqRXHhmj/cover-medium.png' alt="cover">
     {/if}
     {#if index >= 12 && index <= 14}
-    <img src='https://i.postimg.cc/DwZSBgXW/sampah.png' alt="img1">
+    <div class="center-div"><img class="image" src='https://i.postimg.cc/DwZSBgXW/sampah.png' alt="sampah"></div>
+    
     {/if}
     {#if index == 15}
-    <img src='https://i.postimg.cc/k5gvNKnw/lipstick.png' alt="img1">
+    <div class="center-div"><img class="image"  src='https://i.postimg.cc/k5gvNKnw/lipstick.png' alt="lipstick"></div>
     {/if}
     {#if index == 16}
-    <img src='https://i.postimg.cc/hGX7Pr4F/merge-2.png' alt="img1">
+    <div class="center-div"><img class="image"  src='https://i.postimg.cc/hGX7Pr4F/merge-2.png' alt="lipsticks"></div>
     
     {/if}
     {#if index == 17}
-    <img src='https://i.postimg.cc/wjcs1ZHm/chart1.png' alt="img1">
+    <div class="center-div"><img class="image"  src='https://i.postimg.cc/wjcs1ZHm/chart1.png' alt="chart1"></div>
     {/if}
     {#if index == 22}
-    <img src='https://i.postimg.cc/kDPB4Fps/chart2.png' alt="img1">
+    <div class="center-div"><img class="image"  src='https://i.postimg.cc/kDPB4Fps/chart2.png' alt="chart2"></div>
     {/if}
     {#if index == 23 || index == 24}
-    <img src='https://i.postimg.cc/qJmZFBSz/chart3.png' alt="img1">
+    <div class="center-div"><img class="image"  src='https://i.postimg.cc/qJmZFBSz/chart3.png' alt="chart3"></div>
     {/if}
     {#if index >= 18 && index <= 21 || index >= 25 && index <= 27}
-    <img src='https://i.postimg.cc/BQJL1sZB/phone.png' alt="img1">
+    <div class="center-div"><img class="image"  src='https://i.postimg.cc/BQJL1sZB/phone.png' alt="phone"></div>
     {/if}
     {#if index == 31}
-    <img src='https://i.postimg.cc/Y9cj2Byg/table1.png' alt="img1">
+    <div class="center-div"><img class="image"  src='https://i.postimg.cc/Y9cj2Byg/table1.png' alt="table1"></div>
     {/if}
     {#if index >= 28 && index <= 30 || index == 32}
-    <img src='https://i.postimg.cc/YCb1S01F/merge-1.png' alt="img1">
+    <div class="center-div"><img class="image" src='https://i.postimg.cc/YCb1S01F/merge-1.png' alt="lipsticks2"></div>
     {/if}
     {#if index == 33}
-    <img src='https://i.postimg.cc/zDbpPCTc/lipbam.png' alt="img1">
+    <div class="center-div"><img class="image"  src='https://i.postimg.cc/zDbpPCTc/lipbam.png' alt="lipbam"></div>
     {/if}  
   </div>
 
@@ -237,118 +238,120 @@ const changePilih = (color) => {
 <section><div class="center-div"> <div class="prompt" style="background-color: {data1[num].clr}">{data1[num].c}</div></div> </section>
 </div>
 <div>
-<section><div class="center-div"> <p>Saat ini sebenarnya Kementerian Lingkungan Hidup dan Kehutanan (KLHK) 
+<section><div class="center-div"> <div class="prompt"><p>Saat ini sebenarnya Kementerian Lingkungan Hidup dan Kehutanan (KLHK) 
   melalui Permen LHK Nomor 75 Tahun 2019 sudah menargetkan pengurangan timbulan 
-  sampah hingga sebesar 30 persen pada tahun 2030.</p></div> </section>
+  sampah hingga sebesar 30 persen pada tahun 2030.</p></div></div> </section>
 </div>
 <div>
-<section><div class="center-div"> <p>Kementerian LHK mewajibkan produsen untuk mengurangi sampah dengan 
+<section><div class="center-div"> <div class="prompt"><p>Kementerian LHK mewajibkan produsen untuk mengurangi sampah dengan 
   cara menggunakan produk kemasan atau wadah yang mudah diurai oleh alam, mendaur 
   ulang sampah mereka, menggunakan bahan baku produksi hasil daur ulang, serta 
   menarik kembali sampah dan produk kemasan atau wadah dari konsumen untuk didaur ulang.  
   Termasuk dalam industri manufaktur yang diatur oleh Permen ini yaitu industri 
-  kecantikan dan perawatan tubuh atau personal care.</p></div> </section>
+  kecantikan dan perawatan tubuh atau personal care.</p></div></div> </section>
 </div>
 <div>
-<section><div class="center-div"> <p>Memang beberapa tahun belakangan ini industri kecantikan di Indonesia 
+<section><div class="center-div"><div class="prompt"><p>Memang beberapa tahun belakangan ini industri kecantikan di Indonesia 
   sedang mengalami kenaikan yang sangat pesat. Data yang dirilis oleh Nielsen 
   and Euromonitor menunjukkan adanya pertumbuhan penjualan sebesar 11,99% pada 
   tahun 2017 di Indonesia, yang memberikan kontribusi sebesar Rp19 triliun atau 
   setara USD 1,4 miliar. Lebih tinggi dari rata-rata pertumbuhan sektor kosmetik 
-  enam tahun sebelumnya, yaitu hanya 10%. </p></div> </section>
+  enam tahun sebelumnya, yaitu hanya 10%. </p></div></div> </section>
 </div>
 <div>
-<section><div class="center-div"> <p>Kenaikan tersebut juga tergambar dari data produk kosmetik yang terdaftar 
-  di BPOM sejak tahun 2017-2021. Dari hasil analisis, kami menemukan…</p></div> </section>
+<section><div class="center-div"> <div class="prompt"><p>Kenaikan tersebut juga tergambar dari data produk kosmetik yang terdaftar 
+  di BPOM sejak tahun 2017-2021. Dari hasil analisis, kami menemukan…</p></div></div> </section>
 </div>
 <div>
-<section><div class="center-div"><p>Jumlah produk kosmetik yang terdaftar di BPOM melonjak lima kali lipat dari 2017 ke 2021. </p></div></section>
+<section><div class="center-div"><div class="prompt"><p>Jumlah produk kosmetik yang terdaftar di BPOM melonjak lima kali lipat dari 2017 ke 2021. </p></div></div></section>
 </div>
 <div>
-<section><div class="center-div"><p>Informasi Data Kosmetika Terdaftar di cekbpom.pom.go.id</p></div></section>
+<section><div class="center-div"><div class="prompt"><p>Informasi Data Kosmetika Terdaftar di cekbpom.pom.go.id</p></div></div></section>
 </div>
 <div>
-<section><div class="center-div"><p>Salah satu faktor penting yang mengubah pola konsumsi kosmetik di Indonesia, 
+<section><div class="center-div"><div class="prompt"><p>Salah satu faktor penting yang mengubah pola konsumsi kosmetik di Indonesia, 
   menurut narasumber kami Margaretha Untoro, yaitu semakin banyaknya influencer kecantikan 
   khususnya di Youtube. Sehingga membuat orang-orang memiliki ketertarikan lebih kepada 
-  tren kecantikan dan akhirnya menciptakan peluang pasar baru.</p></div></section>
+  tren kecantikan dan akhirnya menciptakan peluang pasar baru.</p></div></div></section>
 </div>
 <div>
-<section><div class="center-div"><p>Pangsa pasar Indonesia untuk industri kosmetik meningkat dari Rp36 triliun pada 
+<section><div class="center-div"><div class="prompt"><p>Pangsa pasar Indonesia untuk industri kosmetik meningkat dari Rp36 triliun pada 
   2016 menjadi Rp46,4 triliun pada 2017. Kemenperin mencatat adanya pertumbuhan sebesar 7,36% 
-  pada kuartal I 2018 dan diperkirakan pasar kosmetik lokal ini akan mencapai Rp77,3 triliun pada 2022.</p></div></section>
+  pada kuartal I 2018 dan diperkirakan pasar kosmetik lokal ini akan mencapai Rp77,3 triliun pada 2022.</p></div></div></section>
 </div>
 <div>
-<section><div class="center-div"><p>Total jumlah produk kosmetik yang terdaftar di BPOM hingga saat ini mencapai 
-  lebih dari 330ribu jenis, baik dari produsen lokal maupun impor. </p></div></section>
+<section><div class="center-div"><div class="prompt"><p>Total jumlah produk kosmetik yang terdaftar di BPOM hingga saat ini mencapai 
+  lebih dari 330ribu jenis, baik dari produsen lokal maupun impor. </p></div></div></section>
 </div>
 <div>
-<section><div class="center-div"><p>Sepanjang 2021 hingga Juli 2022, perusahaan kosmetik yang terdaftar di BPOM 
+<section><div class="center-div"><div class="prompt"><p>Sepanjang 2021 hingga Juli 2022, perusahaan kosmetik yang terdaftar di BPOM 
   juga mengalami pertambahan dari 819 menjadi 913. Peningkatan industri kosmetik tersebut 
-  didominasi oleh UKM, yakni sebesar 83%.</p></div></section>
+  didominasi oleh UKM, yakni sebesar 83%.</p></div></div></section>
 </div>
 <div>
-<section><div class="center-div"><p>Jumlah produk dengan kata kunci ‘lip’ untuk produk dekoratif bibir yang 
-  terdaftar di cekbpom.pom.go.id</p></div></section>
+<section><div class="center-div"><div class="prompt"><p>Jumlah produk dengan kata kunci ‘lip’ untuk produk dekoratif bibir yang 
+  terdaftar di cekbpom.pom.go.id</p></div></div></section>
 </div>
 <div>
-<section><div class="center-div"><p>Perbandingan rata-rata produk kosmetik dan lipstik yang terdaftar per hari 
-  di cekbpom.pom.go.id</p></div></section>
+<section><div class="center-div"><div class="prompt"><p>Perbandingan rata-rata produk kosmetik dan lipstik yang terdaftar per hari 
+  di cekbpom.pom.go.id</p></div></div></section>
 </div>
 <div>
-<section><div class="center-div"><p>Industri lipstik lokal mulai berjaya di tahun 2019. Dari 155 jenis kosmetik 
-  yang terdaftar, 21 di antaranya adalah produk kosmetik bibir. </p></div></section>
+<section><div class="center-div"><div class="prompt"><p>Industri lipstik lokal mulai berjaya di tahun 2019. Dari 155 jenis kosmetik 
+  yang terdaftar, 21 di antaranya adalah produk kosmetik bibir. </p></div></div></section>
 </div>
 <div>
-<section><div class="center-div"><p>Terdapat peningkatan yang berbanding lurus antara jumlah kosmetik yang 
-  terdaftar dengan jumlah produk lipstik di BPOM selama tahun 2017-2021.</p></div></section>
+<section><div class="center-div"><div class="prompt"><p>Terdapat peningkatan yang berbanding lurus antara jumlah kosmetik yang 
+  terdaftar dengan jumlah produk lipstik di BPOM selama tahun 2017-2021.</p></div></div></section>
 </div>
 <div>
-<section><div class="center-div"><p>Di balik besarnya potensi cuan industri kosmetik, ada potensi timbulan 
-  sampah yang menghantuinya. </p></div></section>
+<section><div class="center-div"><div class="prompt"><p>Di balik besarnya potensi cuan industri kosmetik, ada potensi timbulan 
+  sampah yang menghantuinya. </p></div></div></section>
 </div>
 <div>
-<section><div class="center-div"><p>Tapi angka tersebut hanyalah sekitar 15% dari seluruh produk kosmetik 
+<section><div class="center-div"><div class="prompt"><p>Tapi angka tersebut hanyalah sekitar 15% dari seluruh produk kosmetik 
   yang beredar di Indonesia. Mengutip dari Katadata, Perhimpunan Perusahaan dan 
   Asosiasi Kosmetika Indonesia (PPAK) menduga terdapat 85% lainnya yang merupakan 
   produk kosmetik ilegal yang tidak memiliki izin edar ataupun yang merupakan tiruan 
   dari merek lain. Artinya, potensi timbulan sampah kosmetik yang sebenarnya, 
-  lebih besar dari yang tercatat di BPOM.</p></div></section>
+  lebih besar dari yang tercatat di BPOM.</p></div></div></section>
 </div>
 <div>
-<section><div class="center-div"><p>Kami juga merangkum 10 merek kosmetik lokal favorit berdasarkan survei 
+<section><div class="center-div"><div class="prompt"><p>Kami juga merangkum 10 merek kosmetik lokal favorit berdasarkan survei 
   Populix, yaitu Wardah, Emina, Make Over, Somethinc, Purbasari, Y.O.U, 
   Dear Me Beauty, Sariayu, Luxcrime, dan Mustika Ratu. Dari ke-10 merek tersebut, 
   baru Wardah, Emina, Somethinc yang memiliki program daur ulang melalui kerja sama 
   dengan Waste4Change. Sisanya seperti Make Over, Y.O.U, Dear Me Beauty, masih 
   mengandalkan program daur ulang yang disediakan oleh platform Sociolla. Sedangkan 
   Purbasari, Luxcrime, Sariayu, dan Mustika Ratu, belum memiliki kampanye untuk 
-  mendaur ulang produk mereka.</p></div></section>
+  mendaur ulang produk mereka.</p></div></div></section>
 </div>
 <div>
-<section><div class="center-div"><p>Dari hasil wawancara kami dengan Waste4Change, salah satu kriteria produk 
+<section><div class="center-div"><div class="prompt"><p>Dari hasil wawancara kami dengan Waste4Change, salah satu kriteria produk 
   kemasan lipstik yang mudah didaur ulang yaitu menggunakan warna transparan atau putih, 
   agar tidak menghasilkan bijih plastik hasil daur ulang yang downgrade terlalu jauh dari 
-  kualitas plastik baru. </p></div></section>
+  kualitas plastik baru. </p></div></div></section>
 </div>
 <div>
-<section><div class="center-div"> <p>Dari ke-10 produk lokal favorit ada sekitar 94 jenis produk kosmetik dekoratif bibir. 
+<section><div class="center-div"><div class="prompt"><p>Dari ke-10 produk lokal favorit ada sekitar 94 jenis produk kosmetik dekoratif bibir. 
   Namun hanya kurang lebih 38 produk yang menggunakan plastik transparan untuk kemasannya. 
   Sisanya memakai kemasan berwarna hitam, atau warna-warna terang sesuai dengan warna produk 
-  lipstik di dalamnya. </p></div> </section>
+  lipstik di dalamnya. </p></div></div></section>
 </div>
 <div>
-<section><div class="center-div"> <p>Perbandingan jumlah produk kosmetik bibir dengan kemasan transparan dari merek lokal favorit</p></div> </section>
+<section><div class="center-div"><div class="prompt"><p>Perbandingan jumlah produk kosmetik bibir dengan kemasan transparan dari merek lokal favorit</p></div></div></section>
 </div>
 <div>
-<section><div class="center-div"> <p>Kemasan kosmetik yang berwarna tetap bisa didaur ulang. Hanya saja, dibutuhkan 
-  usaha ekstra untuk memisahkan sampah plastik tersebut sesuai warna dan jenis bahannya. </p></div> </section>
+<section><div class="center-div"> <div class="prompt"><p>Kemasan kosmetik yang berwarna tetap bisa didaur ulang. Hanya saja, dibutuhkan 
+  usaha ekstra untuk memisahkan sampah plastik tersebut sesuai warna dan jenis bahannya. </p></div></div> </section>
 </div>
 <div>
-<section><div class="center-div"> <p>Jadi, sampah kosmetik harusnya dikemanain?</p></div> 
-  <button >Pilih lagi cara membuang sampah kosmetikmu</button>
+<section><div class="center-div"> <div class="prompt"><p>Jadi, sampah kosmetik harusnya dikemanain?</p></div> 
+  <div style="display: flex;
+  width: 80%;
+  justify-content: space-between;"><button >Pilih lagi cara membuang sampah kosmetikmu</button>
   <div>atau</div>
-  <button >Klik di sini untuk menonton dokumenter kami</button></section>
+  <button >Klik di sini untuk menonton dokumenter kami</button></div></div></section>
 </div>
 </Scroller>
 </div>
@@ -356,8 +359,9 @@ const changePilih = (color) => {
 <style>
 
 .image{
-      height: 100vh;
-      width: 100vm;
+    height: 80vh;
+    align-items: center;
+    justify-content: center;
   }
 
 [slot="background"] {
@@ -394,6 +398,7 @@ const changePilih = (color) => {
     color: black;
     padding: 10px 30px;
     border: 2px solid;
+    max-width: 1000px;
 }
 
 section {
